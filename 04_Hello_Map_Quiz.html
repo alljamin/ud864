@@ -25,18 +25,18 @@ API Course, Lesson 1 -->
     }
   </script>
   <script type="text/javascript" src="config.js"></script>
-   <!--DONE: Load the JS API ASYNCHRONOUSLY below.-->
-   <script async defer>
-      var GOOGLE_MAP_KEY = config.api_key;
-      
-      function loadScript() {
-        var script = document.createElement('script');
-        script.type = 'text/javascript';
-        script.src = 'https://maps.googleapis.com/maps/api/js?key='+ GOOGLE_MAP_KEY +'&callback=initMap';
-        document.body.appendChild(script);
-      }
-      
-      window.onload = loadScript;
-    </script>
+  <!--DONE: Load the JS API ASYNCHRONOUSLY below.-->
+  <script async defer>
+    var GOOGLE_MAP_KEY = config.api_key;
+
+    function loadScript() {
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.src = 'https://maps.googleapis.com/maps/api/js?key='+ GOOGLE_MAP_KEY +'&callback=initMap';
+      document.body.appendChild(script);
+    }
+
+    window.onload = loadScript;
+  </script>
  </body>
 </html>

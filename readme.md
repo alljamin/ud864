@@ -6,6 +6,6 @@ To run this project:
     api_key : 'YOUR_API_KEY'
 }`
 
-Idea is taken based on these examples:
+Idea is taken from these examples:
 - https://stackoverflow.com/questions/31342359/dynamically-set-googleapi-key
 - https://gist.github.com/derzorngottes/3b57edc1f996dddcab25

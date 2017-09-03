@@ -21,20 +21,57 @@ API Course, Lesson 1 -->
        });
        // Create a single latLng literal object.
        var singleLatLng = {lat: 40.74135, lng: -73.99802};
-       // TODO: Create a single marker appearing on initialize -
+       // Create a single marker appearing on initialize -
        // Create it with the position of the singleLatLng,
        // on the map, and give it your own title!
+       var marker = new google.maps.Marker({
+          position: singleLatLng,
+          map: map,
+          title: 'First Marker!',
+          animation: google.maps.Animation.DROP
+        });
+        var largeInfowindow = new google.maps.InfoWindow();
 
-       // TODO: create a single infowindow, with your own content.
+       // create a single infowindow, with your own content.
        // It must appear on the marker
 
-       // TODO: create an EVENT LISTENER so that the infowindow opens when
+      // This function populates the infowindow when the marker is clicked. We'll only allow
+      // one infowindow which will open at the marker that is clicked, and populate based
+      // on that markers position.
+      function populateInfoWindow(marker, infowindow) {
+        // Check to make sure the infowindow is not already opened on this marker.
+        if (infowindow.marker != marker) {
+          infowindow.marker = marker;
+          infowindow.setContent('<div>' + marker.title + '</div>');
+          infowindow.open(map, marker);
+          // Make sure the marker property is cleared if the infowindow is closed.
+          infowindow.addListener('closeclick',function(){
+            infowindow.setMarker = null;
+          });
+        }
+      }
+
+       // create an EVENT LISTENER so that the infowindow opens when
        // the marker is clicked!
+       marker.addListener('click', function() {
+          populateInfoWindow(this, largeInfowindow);
+        });
      }
    </script>
-   <!--TODO: Insert your API Key in the below call to load the API.-->
-   <script async defer
-     src="https://maps.googleapis.com/maps/api/js?v=3&key=XXX&callback=initMap">
+   <!--Insert your API Key in the below call to load the API.-->
+   <script type="text/javascript" src="config.js"></script>
+   <!--DONE: Load the JS API ASYNCHRONOUSLY below.-->
+   <script async defer>
+     var GOOGLE_MAP_KEY = config.api_key;
+ 
+     function loadScript() {
+       var script = document.createElement('script');
+       script.type = 'text/javascript';
+       script.src = 'https://maps.googleapis.com/maps/api/js?key='+ GOOGLE_MAP_KEY +'&callback=initMap';
+       document.body.appendChild(script);
+     }
+ 
+     window.onload = loadScript;
    </script>
  </body>
 </html>
